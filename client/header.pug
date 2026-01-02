@@ -1,0 +1,13 @@
+link(rel="stylesheet", href="/header.css")
+nav.main-nav
+	.nav-container
+		.nav-brand Restaurant Manager
+		.nav-links
+			a(href="/") Home
+			a(href="/users") Users
+			if user != null
+				a(href=`/users/${user._id}`) profile
+				a(href="/order") order
+				a(href="/logout") Logout
+			else
+				a(href="/login") Login or register

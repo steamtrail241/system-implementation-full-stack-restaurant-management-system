@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		title Restaurant Manager - login
+		link(rel="stylesheet", href="/login.css")
+	body
+		include header.pug
+
+		div.page-container
+			div.content
+				h1 Login form
+
+				div.form-group
+					label(for='name') Username:
+					input#name(type='text')
+
+				div.form-group
+					label(for='delivery_fee') Password:
+					input#password(type='text')
+
+				button#loginBtn Submit
+
+				div.register-link
+					span Don't have an account? 
+					a(href='/register') Register here
+		script(src="/login.js")

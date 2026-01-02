@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    title Restaurant Manager - Order #{order._id}
+    link(rel="stylesheet", href="/orderSummary.css")
+  body
+    include header.pug
+    
+    div.page-container
+      div.content
+        h1 Order Summary
+        
+        p
+          strong Order ID: 
+          span= order._id
+        
+        p
+          strong Customer: 
+          span= order.orders.username
+        
+        p
+          strong Restaurant: 
+          span= order.orders.restaurantName
+        
+        h2 Items
+        ul.item-list
+          each item in Object.values(order.orders.items)
+            li
+              span.item-name= item.name
+              span.item-qty  (x#{item.quantity})
+        
+        div.order-totals
+          p
+            strong Subtotal: 
+            span $#{order.orders.subtotal}
+          p
+            strong Tax: 
+            span $#{order.orders.tax}
+          p
+            strong Delivery Fee: 
+            span $#{order.orders.deliveryFee}
+          p.total
+            strong Total: 
+            span $#{order.orders.total}

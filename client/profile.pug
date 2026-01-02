@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title Restaurant Manager - #{profileUser.username}
+    link(rel="stylesheet", href="/profile.css")
+  body
+    include header.pug
+    
+    div.page-container
+      div.content
+        h1= profileUser.username + "'s Profile"
+        
+        p
+          strong Privacy: 
+          if profileUser.privacy
+            span Private
+          else
+            span Public
+        
+        if isOwner
+          div.privacy-settings
+            h3 Privacy Settings
+            form(method="POST", action=`/users/${profileUser._id}/privacy`)
+              label
+                input(type='radio', name='privacy', value='false', checked=!profileUser.privacy)
+                |  Public (visible to everyone)
+              br
+              label
+                input(type='radio', name='privacy', value='true', checked=profileUser.privacy)
+                |  Private (only you can see)
+              br
+              button(type='submit') Update Privacy
+        
+        h2 Order History
+        if orders.length > 0
+          ul.order-list
+            each order in orders
+              li
+                a(href=`/orders/${order._id}`) Order #{order._id}
+                span  - #{order.orders.restaurantName} - $#{order.orders.total}
+        else
+          p No orders yet.

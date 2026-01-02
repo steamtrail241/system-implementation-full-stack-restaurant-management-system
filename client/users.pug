@@ -1,0 +1,20 @@
+doctype html
+html
+	head
+		title Restaurant Manager - All public users
+		link(rel="stylesheet", href="/users.css")
+	body
+		include header.pug
+
+		div.page-container
+			div.content
+				h1 All public users 
+				form.search-form(method="GET", action="/users")
+					div.form-group
+						label(for='name') Search by username:
+						input#name(type='text', name='name', value=searchName)
+					button(type='submit') Search
+				ul
+					each user in users
+						li
+							a(href=`/users/${user._id}`)= user.username

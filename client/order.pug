@@ -1,0 +1,56 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Restaurant Ordering System
+    link(rel="stylesheet", href="style.css")
+  body
+    include header.pug
+    #header
+      #restaurant-selector
+        label(for="restaurant-select") Select Restaurant:
+        select#restaurant-select
+          option(value="") -- Select a restaurant --
+
+      #restaurant-info
+        h1#restaurant-name
+        div Minimum Order: $
+          span#min-order
+        div Delivery Fee: $
+          span#delivery-fee
+
+    #content-container
+      #main-content
+        #category-links
+          h3 Categories
+          ul#category-list
+
+        #menu-container
+
+        #order-summary
+          h3 Your Order
+          ul#order-items
+
+          #order-totals
+            .total-line
+              span Subtotal:
+              span $
+                span#subtotal 0.00
+            .total-line
+              span Delivery Fee:
+              span $
+                span#delivery-total 0.00
+            .total-line
+              span Tax (10%):
+              span $
+                span#tax 0.00
+            .total-line.grand-total
+              span Total:
+              span $
+                span#total 0.00
+
+          button#submit-button(style="display: none;") Submit Order
+          #minimum-message
+    
+    script(src="client.js")

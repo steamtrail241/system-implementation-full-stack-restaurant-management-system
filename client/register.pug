@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		title Restaurant Manager - Register
+		link(rel="stylesheet", href="/register.css")
+	body
+		include header.pug
+
+		div.page-container
+			div.content
+				h1 Register form
+
+				div.form-group
+					label(for='name') Username:
+					input#name(type='text')
+
+				div.form-group
+					label(for='delivery_fee') Password:
+					input#password(type='text')
+
+				button#registerBtn Submit
+
+				div.register-link
+					span Already have an account? 
+					a(href='/login') Login here
+		script(src="/register.js")
